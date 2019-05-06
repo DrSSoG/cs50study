@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <cs50.h>
+//#include <cs50.h>
 #include <stdbool.h>
 
 int main(void){
@@ -41,6 +41,8 @@ int main(void){
 
 	//STD INPUT OUTPUT CHECK
 	printf("What\'s your name bitch? \n");
-	get_string("...: ");
+	char name[50];
+	scanf("%s", name);
+	printf("%s, hello there, cool name. \n", name);
 }
 
