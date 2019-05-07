@@ -2,6 +2,7 @@
 //#include <cs50.h>
 #include <stdbool.h>
 
+
 int main(void){
 	int counter = 0;
 	printf("hello, world\n");
@@ -41,8 +42,23 @@ int main(void){
 
 	//STD INPUT OUTPUT CHECK
 	printf("What\'s your name bitch? \n");
-	char name[50];
+	char name[50]; //String declaration is a table of char
 	scanf("%s", name);
 	printf("%s, hello there, cool name. \n", name);
+
+	//NEW SECTION GOING TID BIT MORE ADVANCED?
+	printf("======================================================\n");
+
+	//int i = get_int("Integer: "); with cs50.h lib
+	int i; 
+	printf("Integer: ");
+	scanf("%d", &i);	
+	printf("The number you wrote is %d\n", i);
+
+	//float num = get_float("Float: "); with cs50.h lib
+	float num;
+	printf("Float: ");
+	scanf("%f", &num);
+	printf("The number you wrote is %f\n", num);
 }
 
