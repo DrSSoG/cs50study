@@ -28,13 +28,22 @@ void sceneGenerator(int prompt){
 		else if(prompt == 5){ printf("    ##  ##\n   ###  ###\n  ####  ####\n #####  #####\n######  ######\n"); }
 		else if(prompt == 6){ printf("     ##  ##\n    ###  ###\n   ####  ####\n  #####  #####\n ######  ######\n#######  #######\n"); }
 		else if(prompt == 7){ printf("      ##  ##\n     ###  ###\n    ####  ####\n   #####  #####\n  ######  ######\n #######  #######\n########  ########\n"); }
+		else if(prompt == 8){ printf("       ##  ##\n      ###  ###\n     ####  ####\n    #####  #####\n   ######  ######\n  #######  #######\n ########  ########\n#########  #########\n"); }
+	}
+	else{
+		printf("You\'re out of range\n");	
 	}
 }
 
+void sceneGeneratorSwitch(int prompt){
+}
+
 int main(void){
-	//Checking loop
-	for(int i = 1; i < 8; i++){
-		sceneGenerator(i);
+	int prompt;
+	while(1){
+		printf("Height of stairs: ");
+		scanf("%i", &prompt);
+		sceneGenerator(prompt);	
 	}
 }
 
