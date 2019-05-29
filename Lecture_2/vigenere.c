@@ -45,33 +45,27 @@ void cipherer(string plaintext, string keyword)
         string lcAlpha = "abcdefghijklmnopqrstuvwxyz";
         string ucAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        char lowerCase[26];
-        char upperCase[26];
         int numericalKeyword[strlen(keyword)];
-
-        for ( int i = 0, n = strlen(lcAlpha); i < n; i++)
-        {
-            lowerCase[i] = lcAlpha[i];
-            upperCase[i] = ucAlpha[i];
-        }
+        int numericalPlaintext[strlen(plaintext)];
 
         for ( int i = 0, n = strlen(keyword); i < n; i++)
         {
             for ( int j = 0; j < 26; j++)
             {
-                if ( isupper(keyword[i]) && keyword[i] == upperCase[j] )
+                if ( isupper(keyword[i]) && keyword[i] == ucAlpha[j] )
                 {
                     numericalKeyword[i] = j;
                 }
-                else if ( islower(keyword[i]) && keyword[i] == lowerCase[j] )
+                else if ( islower(keyword[i]) && keyword[i] == lcAlpha[j] )
                 {
                     numericalKeyword[i] = j;
                 }
             }
-
-
             printf("Num: %i\n", numericalKeyword[i]);
         }
                     
+        for ( int i = 0, n = strlen(plaintext); i < n; i++)
+        {
+            
        
 }
