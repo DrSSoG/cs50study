@@ -26,6 +26,7 @@ int main(int argc, string argv[])
     if ( argc == 2 && check )
     {
         string plaintext = get_string("plaintext: ");
+        printf("ciphertext: ");
         cipherer(plaintext, key);
 
         printf("Success\n");
@@ -41,13 +42,16 @@ int main(int argc, string argv[])
 
 void cipherer(string plaintext, string keyword)
 {
-        printf("Function ran correctly...\n"); 
         string lcAlpha = "abcdefghijklmnopqrstuvwxyz";
         string ucAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         int numericalKeyword[strlen(keyword)];
         int numericalPlaintext[strlen(plaintext)];
+        int count = 0;
+        int key;
+        int loopCounter = 0;
 
+        // Changes the actual keyword into a list of respective ints
         for ( int i = 0, n = strlen(keyword); i < n; i++)
         {
             for ( int j = 0; j < 26; j++)
@@ -61,11 +65,60 @@ void cipherer(string plaintext, string keyword)
                     numericalKeyword[i] = j;
                 }
             }
-            printf("Num: %i\n", numericalKeyword[i]);
+        //    printf("Num: %i\n", numericalKeyword[i]);
         }
                     
-        for ( int i = 0, n = strlen(plaintext); i < n; i++)
+        // Shifts the text according to keyword
+        while (count < strlen(plaintext))
         {
-            
-       
+            // Key needs to reset after each loop
+            if (count != 0 && ((count + 1) % strlen(keyword) != 0))
+            {
+               //key = numericalKeyword[count];
+                loopCounter++;
+            }
+            else
+            {
+                loopCounter = 0;
+               //loopCounter++;
+               //key = numericalKeyword[count-strlen(keyword)*loopCounter]; 
+            }
+            key = numericalKeyword[loopCounter];
+            int result;
+            // 3 step check of the character in iteration
+            if ( isalpha(plaintext[count]) && isupper(plaintext[count]))
+            {
+                // Converting character into ASCII and checking if it goes
+                // over the range if it does substracting 26 to reset position "rotate"
+                int c = (int) plaintext[count];
+                if (c + key > 90)
+                {
+                    result = c + key - 26;
+                }
+                else
+                {
+                    result = c + key;
+                }
+                printf("%c", result);
+            }
+            else if ( isalpha(plaintext[count]) && islower(plaintext[count]))
+            {
+                int c = (int) plaintext[count];
+                if (c + key > 122)
+                {
+                    result = c + key - 26;
+                }
+                else
+                {
+                    result = c + key;
+                }
+                printf("%c", result);
+            }
+            else
+            {
+                printf("%c", plaintext[count]);
+	        }	
+            count++;
+        } 
+            printf("\n");
 }
